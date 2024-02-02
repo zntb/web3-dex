@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import Logo from '../moralis-logo.svg';
 import Eth from '../eth.svg';
 
-function Header() {
+function Header({ address, isConnected, connect }) {
   return (
     <header>
       <div className="leftH">
@@ -20,7 +20,11 @@ function Header() {
           <img src={Eth} alt="eth" className="eth" />
           Ethereum
         </div>
-        <div className="connectButton">Connect</div>
+        <div className="connectButton" onClick={connect}>
+          {isConnected
+            ? address.slice(0, 4) + '...' + address.slice(38)
+            : 'Connect'}
+        </div>
       </div>
     </header>
   );
